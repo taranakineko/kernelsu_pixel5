@@ -1,17 +1,12 @@
+# This is a basic workflow to help you get started with Actions
+
 name: build_kernelsu_for_redbull
+
+# Controls when the workflow will run
 on:
-  release:
-    types: [published]
-    repos:
-      - tiann/KernelSU
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      release:
-        description: "Release"
-        required: true
-        default: false
-        type: boolean
-        
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -35,7 +30,7 @@ jobs:
           git clone https://github.com/CZB666-wdnmd/kernelsu_redbull
           mkdir android-kernel && cd android-kernel
           echo 'pulling kernel source'
-          repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-redbull-4.19-android13-qpr3
+          repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-redbull-4.19-android13-qpr1
           repo sync
           cd private/msm-google
           echo 'cloning kernelsu'
@@ -50,30 +45,11 @@ jobs:
           cp /home/runner/kernelsu_redbull/stat.c /home/runner/android-kernel/private/msm-google/fs/stat.c
           cp /home/runner/kernelsu_redbull/input.c /home/runner/android-kernel/private/msm-google/drivers/input/input.c
           cd /home/runner/android-kernel
-
       - name: Build
         run: |
           cd /home/runner/android-kernel
           ./build_redbull-gki.sh
- 
-      - name: Setting up AnyKenrel3
-        run: |
-          cd /home/runner/android-kernel
-          git clone https://github.com/osm0sis/AnyKernel3.git
-          sed -i 's/do.devicecheck=1/do.devicecheck=0/g' AnyKernel3/anykernel.sh
-          sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' AnyKernel3/anykernel.sh
-          sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' AnyKernel3/anykernel.sh
-          cp /home/runner/android-kernel/out/android-msm-pixel-4.19/dist/Image.lz4-dtb AnyKernel3/
-          cd ./AnyKernel3/
-          zip -r AnyKernel3 . -x ".git*" -x "README.md" -x "*.zip"
-
-      - name: Upload kernel
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: AnyKernel3.zip
-          path: "/home/runner/android-kernel/AnyKernel3/AnyKernel3.zip"
-
+          
       - name: Upload kernel
         if: success()
         uses: actions/upload-artifact@v3
