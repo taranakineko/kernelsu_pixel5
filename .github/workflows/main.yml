@@ -48,7 +48,7 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y repo git
           echo 'cloning itself'
-          git clone https://github.com/Shinhubzhu/kernelsu_pixel5.git
+          git clone https://github.com/Shinhubzhu/kernelsu_pixel5
           mkdir android-kernel && cd android-kernel
           echo 'pulling kernel source'
           repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-redbull-4.19-android13-qpr3
@@ -60,7 +60,7 @@ jobs:
           cp /home/runner/kernelsu_pixel5/open.c /home/runner/android-kernel/private/msm-google/fs/open.c
           cp /home/runner/kernelsu_pixel5/exec.c /home/runner/android-kernel/private/msm-google/fs/exec.c
           cp /home/runner/kernelsu_pixel5/read_write.c /home/runner/android-kernel/private/msm-google/fs/read_write.c
-          cp /home/runner/kkernelsu_pixel5/stat.c /home/runner/android-kernel/private/msm-google/fs/stat.c
+          cp /home/runner/kernelsu_pixel5/stat.c /home/runner/android-kernel/private/msm-google/fs/stat.c
           cp /home/runner/kernelsu_pixel5/input.c /home/runner/android-kernel/private/msm-google/drivers/input/input.c
           cd /home/runner/android-kernel
 
