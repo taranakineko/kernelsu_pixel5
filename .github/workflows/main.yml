@@ -55,7 +55,9 @@ jobs:
           repo sync
           cd private/msm-google
           echo 'cloning kernelsu'
-          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+          git clone https://github.com/tiann/KernelSU
+          echo 'patching files'
+          ln -sf "/home/runner/android-kernel/private/msm-google/KernelSU/kernel" "/home/runner/android-kernel/private/msm-google/drivers/kernelsu"
           echo "obj-y += kernelsu/" >> /home/runner/android-kernel/private/msm-google/drivers/Makefile
           cp /home/runner/kernelsu_pixel5/open.c /home/runner/android-kernel/private/msm-google/fs/open.c
           cp /home/runner/kernelsu_pixel5/exec.c /home/runner/android-kernel/private/msm-google/fs/exec.c
