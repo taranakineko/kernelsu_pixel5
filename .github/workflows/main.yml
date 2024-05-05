@@ -59,7 +59,6 @@ jobs:
           echo 'patching files'
           ln -sf "/home/runner/android-kernel/private/msm-google/KernelSU/kernel" "/home/runner/android-kernel/private/msm-google/drivers/kernelsu"
           echo "obj-y += kernelsu/" >> /home/runner/android-kernel/private/msm-google/drivers/Makefile
-          cp /home/runner/kernelsu_redbull/ksu.c /home/runner/android-kernel/private/msm-google/KernelSU/kernel/ksu.c
           cp /home/runner/kernelsu_redbull/open.c /home/runner/android-kernel/private/msm-google/fs/open.c
           cp /home/runner/kernelsu_redbull/exec.c /home/runner/android-kernel/private/msm-google/fs/exec.c
           cp /home/runner/kernelsu_redbull/read_write.c /home/runner/android-kernel/private/msm-google/fs/read_write.c
