@@ -55,7 +55,7 @@ jobs:
           repo sync
           cd private/msm-google
           echo 'cloning kernelsu'
-          git clone https://github.com/tiann/KernelSU
+          git clone --branch v0.9.5 https://github.com/tiann/KernelSU
           echo 'patching files'
           ln -sf "/home/runner/android-kernel/private/msm-google/KernelSU/kernel" "/home/runner/android-kernel/private/msm-google/drivers/kernelsu"
           echo "obj-y += kernelsu/" >> /home/runner/android-kernel/private/msm-google/drivers/Makefile
