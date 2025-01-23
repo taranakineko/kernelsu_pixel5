@@ -51,7 +51,7 @@ jobs:
           git clone https://github.com/CZB666-wdnmd/kernelsu_redbull
           mkdir android-kernel && cd android-kernel
           echo 'pulling kernel source'
-          repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-redbull-4.19-android13-qpr3
+          repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-redbull-4.19-android14-qpr3
           repo sync
           cd private/msm-google
           echo 'cloning kernelsu'
