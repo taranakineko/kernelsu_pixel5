@@ -92,7 +92,7 @@ jobs:
 
       - name: Upload kernel
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Image.lz4-dtb
           path: "/home/runner/android-kernel/out/android-msm-pixel-4.19/dist/Image.lz4-dtb"
